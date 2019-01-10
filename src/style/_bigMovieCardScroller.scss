@@ -1,0 +1,42 @@
+$star-radius: 15px;
+
+.recommended-movies {
+  padding: 0 $pageMargin;
+  color: rgb(255, 255, 255);
+  .section-title {
+    position: relative;
+    font-size: 20px;
+  }
+  .horizontal-scroll-wrapper {
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 25px 0;
+  }
+  .horizontal-scroll-card.movie-card {
+    width: calc(50% - 10px);
+    display: inline-block;
+    margin: 0 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .movie-poster {
+    width: 100%;
+    height: 70vw;
+    background-size: cover;
+    background-position: center;
+    border-radius: $mainBorderRradius;
+    box-shadow: $movieCardsBoxShadow;
+  }
+  .card-rating {
+    @include flex($justifyContent: space-between);
+  }
+  .rating-stars .icon-star-full {
+    width: $star-radius;
+    height: $star-radius;
+    stroke: $yellow;
+    margin: 1px;
+  }
+  .description {
+  }
+}

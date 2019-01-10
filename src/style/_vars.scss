@@ -1,0 +1,59 @@
+//Collor palete
+$yellow: rgb(243, 189, 19);
+$mainGray: rgb(30, 30, 36);
+$secondaryGray: rgb(41, 43, 51);
+$lightGray: rgb(75, 75, 80);
+$darkGray: rgb(25, 25, 30);
+$black: rgb(14, 14, 14);
+
+$movieCardsBoxShadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+
+$pageMargin: 10px;
+
+$mainBorderRradius: 5px;
+
+//Yellow button
+%yellow-button {
+  background-color: $yellow;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  &.not-filled {
+    background-color: transparent;
+    border: 1px solid $yellow;
+  }
+}
+
+//Center/Cover background
+%cover-center-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+//Movie poster sizes
+%large-movie-poster {
+}
+
+%medium-movie-poster {
+  @extend %cover-center-bg;
+  width: calc(75px + 15vw);
+  height: calc(115px + 20vw);
+  box-shadow: $movieCardsBoxShadow;
+  max-height: 210px;
+  max-width: 145px;
+}
+
+%small-movie-poster {
+  @extend %cover-center-bg;
+  width: calc(80px + 15vw);
+  height: calc(100px + 20vw);
+  box-shadow: $movieCardsBoxShadow;
+  border-radius: $mainBorderRradius;
+}
+
+//Actors images sizes
+%actor-image-size {
+}

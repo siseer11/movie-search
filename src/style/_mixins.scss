@@ -1,0 +1,45 @@
+//Flex mixin, for elements that need a display of flex
+// By default center everything
+@mixin flex($flexDirection: row, $alignItems: center, $justifyContent: center) {
+  display: flex;
+  flex-direction: $flexDirection;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+// Absolute mixin, for elements that need a position of absolute
+// By default full size of the parent, top 0 , left 0
+@mixin absolute(
+  $width: 100%,
+  $height: 100%,
+  $top: 0,
+  $left: 0,
+  $right: null,
+  $bottom: null
+) {
+  position: absolute;
+  @if $bottom {
+    bottom: $bottom;
+  } @else {
+    top: $top;
+  }
+  @if $right {
+    right: $right;
+  } @else {
+    left: $left;
+  }
+  width: $width;
+  height: $height;
+}
+// Mixin for background-images,
+// Default size cover and position center
+@mixin centerCoverBackground(
+  $url: null,
+  $backgroundSize: "cover",
+  $backgroundPosition: "center"
+) {
+  @if $url {
+    background-image: $url;
+  }
+  background-size: $backgroundSize;
+  background-position: $backgroundPosition;
+}

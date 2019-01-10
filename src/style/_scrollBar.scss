@@ -1,0 +1,14 @@
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: $mainBorderRradius;
+  background-color: $lightGray;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $mainBorderRradius;
+  background-color: $yellow;
+}

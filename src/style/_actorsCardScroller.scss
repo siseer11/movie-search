@@ -1,0 +1,51 @@
+.recommended-actors {
+  background-color: $darkGray;
+  color: white;
+  padding: 30px $pageMargin;
+  margin: 50px 0;
+  .horizontal-scroll-wrapper {
+    overflow-x: scroll;
+    padding: 30px 0;
+    white-space: nowrap;
+  }
+  .horizontal-scroll-card.actor-card {
+    position: relative;
+    width: 40%;
+    height: 50vw;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    margin: 0 5px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .fade-overlay {
+    @include absolute($height: 50%, $bottom: 0);
+    background: linear-gradient(rgba(32, 32, 39, 0), $darkGray);
+  }
+  .like-button {
+    @include absolute($width: 28px, $height: 28px, $top: 0px, $right: 0px);
+    border-radius: 0 0 0 5px;
+    background: $darkGray;
+    @include flex();
+    svg.icon-heart {
+      stroke: $yellow;
+      width: 15px;
+      height: 15px;
+      fill: transparent;
+    }
+    &.filled {
+      fill: $yellow;
+      stroke: none;
+    }
+  }
+  .actor-name {
+    z-index: 2;
+    font-size: 15px;
+    text-align: center;
+    overflow: hidden;
+    @include absolute($height: auto, $bottom: 15px, $width: 90%, $left: 5%);
+    white-space: normal;
+  }
+}

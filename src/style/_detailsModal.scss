@@ -1,0 +1,213 @@
+.details-modal {
+  @include absolute($height: 100vh);
+  background-color: $mainGray;
+  color: rgb(255, 255, 255);
+  overflow-y: auto;
+  h2.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .top-banner {
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    .buttons {
+      @include flex($justifyContent: space-between);
+      z-index: 10;
+      position: relative;
+      padding: 30px 15px;
+      & > * {
+        cursor: pointer;
+        background: $mainGray;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        @include flex();
+      }
+    }
+    .back-button {
+      fill: rgb(255, 255, 255);
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .like-button {
+      stroke: $yellow;
+      fill: transparent;
+      &.filled {
+        fill: $yellow !important;
+        stroke: none !important;
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    .fade-effect {
+      @include absolute();
+      background: linear-gradient(rgba(30, 30, 36, 0.1) 0%, $mainGray);
+    }
+  }
+  .details-content {
+    transform: translateY(-17vh);
+    padding: 0 $pageMargin;
+    margin-bottom: -15vh;
+    .top-short-infos {
+      @include flex($alignItems: flex-start);
+    }
+    .left.movie-poster {
+      @extend %small-movie-poster;
+    }
+    .right {
+      flex-grow: 1;
+      margin-left: 15px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    h2.movie-title {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+    .runtime {
+      font-size: 20px;
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+    .genres {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .rating {
+      @include flex($justifyContent: space-between);
+      p {
+        opacity: 0.8;
+      }
+      .right-rating {
+        @include flex();
+        color: $yellow;
+      }
+      .icon-star-full {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .summary {
+    margin-top: 45px;
+    .summary-text {
+      font-size: 15px;
+      line-height: 20px;
+    }
+  }
+  .cast {
+    margin-top: 30px;
+  }
+  table {
+    font-size: 15px;
+    th.left-content {
+      text-align: left;
+      opacity: 0.7;
+      padding: 5px 0;
+    }
+    th.right-content {
+      text-align: left;
+      padding: 5px 0px 5px 25px;
+    }
+  }
+  .season-data {
+    margin: 30px 0;
+    .top-content {
+      display: flex;
+    }
+    .top-content .right-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .season-poster {
+      @extend %small-movie-poster;
+      margin-right: 15px;
+    }
+    .show-episodes.button {
+      @extend %yellow-button;
+      padding: 10px;
+    }
+  }
+  .button.add-to-favorite {
+    @extend %yellow-button;
+    padding: 20px;
+  }
+}
+
+//Episodes styling
+.details-content .episodes {
+  padding: 30px 0 20px;
+  overflow-x: auto;
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+  .episode {
+    width: calc(200px + 15vw);
+    white-space: normal;
+    position: relative;
+    background-color: $black;
+    border-radius: $mainBorderRradius;
+    box-shadow: $movieCardsBoxShadow;
+    cursor: pointer;
+    a {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      .top-content {
+        display: flex;
+        height: calc(120px + 10vw);
+        position: relative;
+        align-items: flex-end;
+        background-size: cover;
+        background-position: center;
+      }
+      .fade-effect {
+        @include absolute($bottom: -1px, $height: 75%);
+        background: linear-gradient(rgba(14, 14, 14, 0), $black);
+      }
+      .basic-infos {
+        @include flex($justifyContent: space-between);
+        z-index: 10;
+        width: 100%;
+        padding: 5px;
+      }
+      .episode-title {
+        font-size: 18px;
+      }
+      .runtime {
+        margin: 0;
+        font-size: 15px;
+      }
+      .bottom-content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 20px 15px 10px 10px;
+      }
+      .episode-description {
+        flex-grow: 1;
+      }
+      .episode-description p {
+        flex-grow: 1;
+        font-size: 15px;
+      }
+      .episode-number {
+        text-align: right;
+        font-size: 15px;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+    }
+  }
+}

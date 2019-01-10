@@ -1,0 +1,92 @@
+$navPaddings: 20px 15px;
+
+.nav-bar {
+  $svgRadius: 30px;
+  background-color: $secondaryGray;
+  @include flex($justifyContent: space-between);
+  padding: $navPaddings;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  svg {
+    width: $svgRadius;
+    height: $svgRadius;
+    &.icon-search {
+      cursor: pointer;
+      fill: white;
+    }
+  }
+}
+
+.nav-bar .form-wrapper {
+  $submitWidth: 80px;
+  @include absolute();
+  padding: $navPaddings;
+  box-sizing: border-box;
+  form {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    input.search-input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: $mainBorderRradius;
+      padding: 0 $submitWidth + 5px 0 10px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    input.submit-input {
+      @include absolute(
+        $height: 80%,
+        $width: $submitWidth,
+        $right: 3px,
+        $top: 10%
+      );
+      border: none;
+      @extend %yellow-button;
+    }
+  }
+}
+// Search Form animation pieces
+.nav-bar .form-wrapper {
+  // Animation related variables
+  $animationName: zzzz;
+  $searchBarDuration: 0.2s;
+  $searchButtonDuration: 0.1s; // initial styles
+  z-index: -1;
+  input.search-input {
+    transform: scaleX(0);
+    transition: $searchBarDuration linear transform;
+    transform-origin: right;
+  }
+  input.submit-input {
+    transform: scale(0.5);
+    opacity: 0;
+    transition: $searchButtonDuration $searchBarDuration - 0.1s linear all;
+  }
+  // enter effect
+  &.#{$animationName}-enter,
+  &.#{$animationName}-enter-done {
+    z-index: 99;
+    input.search-input {
+      transform: scaleX(1);
+    }
+    input.submit-input {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  // exit effect
+  &.#{$animationName}-exit {
+    z-index: 99;
+    input.search-input {
+      transform: scaleX(0);
+      transition: $searchBarDuration $searchButtonDuration linear transform;
+    }
+    input.submit-input {
+      transform: scale(0.5);
+      opacity: 0;
+      transition: $searchButtonDuration linear all;
+    }
+  }
+}
