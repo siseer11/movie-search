@@ -1,6 +1,10 @@
 .search-results-section {
-  padding: 0 $pageMargin;
+  padding: 30px $pageMargin;
   color: rgb(255, 255, 255);
+}
+
+.search-results-items {
+  padding-top: 20px;
   .movie-card {
     display: flex;
     cursor: pointer;
@@ -14,7 +18,10 @@
   }
   .movie-poster {
     @extend %medium-movie-poster;
-    margin-right: 10px;
+    margin-right: calc(5px + 2vw);
+  }
+  .blured-poster {
+    display: none;
   }
   .movie-basic-details {
     .top-content {
@@ -39,6 +46,56 @@
     }
     .summary {
       font-size: 13px;
+    }
+  }
+}
+
+//For screens that are at least 500px wide
+@media screen and (min-width: 500px) {
+  .search-results-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .movie-card {
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+      &:before {
+        display: none;
+      }
+    }
+    .blured-poster {
+      @include absolute($top: 10%, $height: 80%);
+      filter: blur(10px);
+      display: block;
+      z-index: -1;
+      background-size: contain;
+      background-position: center;
+      opacity: 0.8;
+    }
+    .movie-poster {
+      margin: 0;
+    }
+    .left-content {
+      @include flex();
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+//For screens that are at least 675px wide
+@media screen and (min-width: 675px) {
+  .search-results-section {
+    padding: 50px 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+    .movie-card {
+      width: 31%;
+    }
+    .left-content {
+      margin-bottom: 10px;
     }
   }
 }

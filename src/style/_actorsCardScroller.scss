@@ -2,18 +2,21 @@
   background-color: $darkGray;
   color: white;
   padding: 30px $pageMargin;
-  margin: 50px 0;
+  margin-top: 70px;
+  .section-title {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
   .horizontal-scroll-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
     overflow-x: scroll;
-    padding: 30px 0;
+    padding: 40px 0 25px;
     white-space: nowrap;
   }
   .horizontal-scroll-card.actor-card {
     position: relative;
-    width: 40%;
-    height: 50vw;
-    background-size: cover;
-    background-position: center;
+    @extend %actor-image-size;
     display: inline-block;
     margin: 0 5px;
     &:first-child {

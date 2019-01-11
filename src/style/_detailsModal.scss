@@ -154,6 +154,7 @@
   grid-column-gap: 10px;
   .episode {
     width: calc(200px + 15vw);
+    max-width: 300px;
     white-space: normal;
     position: relative;
     background-color: $black;
@@ -167,6 +168,7 @@
       .top-content {
         display: flex;
         height: calc(120px + 10vw);
+        max-height: 160px;
         position: relative;
         align-items: flex-end;
         background-size: cover;
@@ -200,7 +202,7 @@
       }
       .episode-description p {
         flex-grow: 1;
-        font-size: 15px;
+        font-size: 13px;
       }
       .episode-number {
         text-align: right;

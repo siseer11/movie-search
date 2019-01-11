@@ -57,7 +57,8 @@ export default class SearchPage extends React.Component {
   render() {
     return (
       <div className="search-results-section">
-        <h2>Search Results</h2>
+        <DetailedInformationsModal />
+        <h2 className="section-title">Search Results</h2>
         {shows ? (
           <ShowsList shows={shows} />
         ) : (
@@ -83,6 +84,10 @@ const ShowsList = ({ shows }) => (
           <div className="left-content">
             <div
               className="movie-poster"
+              style={{ backgroundImage: `url(${moviePoster})` }}
+            />
+            <div
+              className="blured-poster"
               style={{ backgroundImage: `url(${moviePoster})` }}
             />
           </div>

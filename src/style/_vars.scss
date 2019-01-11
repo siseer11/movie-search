@@ -35,6 +35,13 @@ $mainBorderRradius: 5px;
 
 //Movie poster sizes
 %large-movie-poster {
+  @extend %cover-center-bg;
+  box-shadow: $movieCardsBoxShadow;
+  width: 100%;
+  height: calc(175px + 20vw);
+  @media screen and (min-width: 850px) {
+    max-height: 350px;
+  }
 }
 
 %medium-movie-poster {
@@ -44,6 +51,10 @@ $mainBorderRradius: 5px;
   box-shadow: $movieCardsBoxShadow;
   max-height: 210px;
   max-width: 145px;
+  @media screen and (min-width: 500px) {
+    max-height: 260px;
+    max-width: 180px;
+  }
 }
 
 %small-movie-poster {
@@ -56,4 +67,9 @@ $mainBorderRradius: 5px;
 
 //Actors images sizes
 %actor-image-size {
+  @extend %cover-center-bg;
+  max-height: 200px;
+  height: calc(160px + 10vw);
+  max-width: 150px;
+  width: 40%;
 }

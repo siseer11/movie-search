@@ -21,19 +21,21 @@ export default class NavBar extends React.Component {
     const { history } = this.props;
     return (
       <div className="nav-bar">
-        <div className="left-content">
-          <Link to="/home">
-            <LogoIcon />
-          </Link>
+        <div className="inner-nav-bar">
+          <div className="left-content">
+            <Link to="/home">
+              <LogoIcon />
+            </Link>
+          </div>
+          <div className="right-content" onClick={this.toggleSearchInput}>
+            <SearchIcon />
+          </div>
+          <SearchForm
+            closeForm={this.toggleSearchInput}
+            visible={showSearchInput}
+            history={history}
+          />
         </div>
-        <div className="right-content" onClick={this.toggleSearchInput}>
-          <SearchIcon />
-        </div>
-        <SearchForm
-          closeForm={this.toggleSearchInput}
-          visible={showSearchInput}
-          history={history}
-        />
       </div>
     );
   }
