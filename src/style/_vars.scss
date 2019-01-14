@@ -60,7 +60,7 @@ $mainBorderRradius: 5px;
 %small-movie-poster {
   @extend %cover-center-bg;
   width: calc(80px + 15vw);
-  height: calc(100px + 20vw);
+  height: calc(115px + 20vw);
   box-shadow: $movieCardsBoxShadow;
   border-radius: $mainBorderRradius;
 }

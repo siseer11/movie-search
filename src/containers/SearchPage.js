@@ -1,110 +1,572 @@
 import React from "react";
-import { descriptionShortner } from "../helperFunctions/descriptionShortner";
 
-import DetailedInformationsModal from "./DetailedInformationsModal";
-import { StarIcon } from "../components/Svgs";
-
-const shows = [
-  {
-    id: 1586437,
-    url:
-      "http://www.tvmaze.com/episodes/1586437/abby-hatcher-1x11-hair-flair-fuzzly",
-    name: "Counting Cars",
-    summary:
-      '<p>Most people in Las Vegas bet with chips, but Danny "The Count" Koker bets with cars. Known from his numerous appearances on Pawn Stars, this Sin City legend walks, talks and breathes classic American muscle cars. When he sees a car he wants, he will do whatever it takes to get his hands on it—including making on-the-spot cash offers to unsuspecting owners. On the HISTORY series <b>Counting Cars</b>, Danny and his team restore, customize and sell cars in a hurry, scrambling to keep their Las Vegas shop in the black. From vintage Thunderbirds to classic Corvettes, toy cars to souped-up sidecar motorcycles, Danny and the crew of Count\'s Kustoms will stop at nothing to find and flip the greatest rides of all time.</p>',
-    rating: {
-      average: 8.6
-    },
-    runtime: 65,
-    image: {
-      original:
-        "http://static.tvmaze.com/uploads/images/original_untouched/9/24055.jpg"
-    }
-  },
-  {
-    id: 8110,
-    url:
-      "http://www.tvmaze.com/episodes/1586437/abby-hatcher-1x11-hair-flair-fuzzly",
-    name: "Z Cars",
-    runtime: 30,
-    summary:
-      '<p><b>Z Cars</b> or <i>Z-Cars</i> was a British television drama series centred on the work of mobile uniformed police in the fictional town of Newtown, based on Kirkby, Merseyside. Produced by the BBC, it debuted in January 1962 and ran until September 1978.</p><p>The series differed sharply from earlier police procedurals. With its less-usual Northern setting, it injected a new element of harsh realism into the image of the police, which some found unwelcome.</p><p><i>Z Cars</i> ran for a total of 803 episodes, of which fewer than half have survived. Regular stars included Stratford Johns (Detective Inspector Barlow), Frank Windsor (Det. Sgt Watt), James Ellis (Bert Lynch) and Brian Blessed ("Fancy" Smith). Barlow and Watt were later spun into a separate series "Softly, Softly".</p><p>The name <i>Z Cars</i> relates to an imaginary "Z" Division of the local constabulary. The theme tune was based on a traditional Liverpool folk song, and was adopted by Everton Football Club as its official anthem.</p>',
-    rating: {
-      average: null
-    },
-    image: {
-      original:
-        "http://static.tvmaze.com/uploads/images/original_untouched/29/73773.jpg"
-    }
-  },
-  {
-    id: 40158,
-    url:
-      "http://www.tvmaze.com/episodes/1586437/abby-hatcher-1x11-hair-flair-fuzzly",
-    name: "Mystery Cars",
-    image: null,
-    summary:
-      "<p>In the 1950's, America had broken free from the shackles of wartime economics. It was walking with the swagger of a Nation that had the world by the tail. Scientists had harnessed nuclear energy. Jetpropelled airplanes were breaking speed records... and the race to space was on! But perhaps more than anything else, one thing melded imagination and consumerism, putting this era in perfect context: The concept car. Unlike satellites, rockets, and jet planes these dream cars were accessible. People flocked to auto shows like GM's Motorama to see the concept cars in their titanium bodied glory. They were snapshots of how America perceived its future. Jaw dropping, unforgettable but what happened then? Most were destroyed. Some just plain vanished. But amazingly, some are still here and new series Mystery Cars is on a mission to find them.</p>",
-    rating: {
-      average: 5.2
-    },
-    runtime: 45,
-    image: null
-  }
-];
+import { AppContext } from "../AppContext";
+import { DetailedMoviesList } from "../components/DetailedMoviesList";
 
 export default class SearchPage extends React.Component {
   render() {
     return (
-      <div className="search-results-section">
-        <DetailedInformationsModal />
-        <h2 className="section-title">Search Results</h2>
-        {shows ? (
-          <ShowsList shows={shows} />
-        ) : (
-          <div className="no-search-results">No search results</div>
+      <AppContext.Consumer>
+        {({ toggleDetailedMovieModal }) => (
+          <React.Fragment>
+            <div className="search-results-section">
+              <h2 className="section-title">Search Results</h2>
+              {moviesData ? (
+                <DetailedMoviesList
+                  moviesData={moviesData}
+                  toggleDetailedMovieModal={toggleDetailedMovieModal}
+                />
+              ) : (
+                <div className="no-search-results">No search results</div>
+              )}
+            </div>
+          </React.Fragment>
         )}
-      </div>
+      </AppContext.Consumer>
     );
   }
 }
 
-const ShowsList = ({ shows }) => (
-  <ul className="search-results-items">
-    {shows.map(el => {
-      //Show default poster if the API does not provide one
-      const moviePoster = el.image
-        ? el.image.original
-        : "https://images.unsplash.com/photo-1484069560501-87d72b0c3669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80";
-
-      const summary = descriptionShortner({ desc: el.summary, max: 250 });
-
-      return (
-        <li className="movie-card" key={el.id}>
-          <div className="left-content">
-            <div
-              className="movie-poster"
-              style={{ backgroundImage: `url(${moviePoster})` }}
-            />
-            <div
-              className="blured-poster"
-              style={{ backgroundImage: `url(${moviePoster})` }}
-            />
-          </div>
-          <div className="right-content movie-basic-details">
-            <div className="top-content">
-              <h2 class="movie-title">{el.name}</h2>
-              <div className="rating">
-                <StarIcon />
-                <p className="rating-number">
-                  {el.rating.average ? el.rating.average : "N/A"}
-                </p>
-              </div>
-            </div>
-            <div className="summary">{summary}</div>
-          </div>
-        </li>
-      );
-    })}
-  </ul>
-);
+var moviesData = [
+  {
+    score: 13.498132,
+    show: {
+      id: 334,
+      url: "http://www.tvmaze.com/shows/334/drunk-history",
+      name: "Drunk History",
+      type: "Variety",
+      language: "English",
+      genres: ["Comedy"],
+      status: "Running",
+      runtime: 30,
+      premiered: "2013-07-09",
+      officialSite: "http://www.cc.com/shows/drunk-history",
+      schedule: {
+        time: "22:00",
+        days: ["Tuesday"]
+      },
+      rating: {
+        average: 6.3
+      },
+      weight: 89,
+      network: {
+        id: 23,
+        name: "Comedy Central",
+        country: {
+          name: "United States",
+          code: "US",
+          timezone: "America/New_York"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: 36291,
+        thetvdb: 270550,
+        imdb: "tt2712612"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/147/369352.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/147/369352.jpg"
+      },
+      summary:
+        "<p>Based on the popular web series, <b>Drunk History</b> is the liquored-up narration of our nation's history. Host Derek Waters, along with an ever-changing cast of actors and comedians, travels across the country to present the rich tales that every city in this land has to offer. Booze helps bring out the truth. It's just that sometimes the truth is a little incoherent.</p>",
+      updated: 1547044691,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/334"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1485500"
+        },
+        nextepisode: {
+          href: "http://api.tvmaze.com/episodes/1565106"
+        }
+      }
+    }
+  },
+  {
+    score: 13.081142,
+    show: {
+      id: 13863,
+      url: "http://www.tvmaze.com/shows/13863/secret-history",
+      name: "Secret History",
+      type: "Documentary",
+      language: "English",
+      genres: ["History"],
+      status: "Running",
+      runtime: 60,
+      premiered: "1991-11-14",
+      officialSite:
+        "http://www.channel4.com/programmes/the-dambusters-great-escape-secret-history",
+      schedule: {
+        time: "",
+        days: ["Sunday"]
+      },
+      rating: {
+        average: null
+      },
+      weight: 0,
+      network: {
+        id: 45,
+        name: "Channel 4",
+        country: {
+          name: "United Kingdom",
+          code: "GB",
+          timezone: "Europe/London"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: null,
+        thetvdb: 189431,
+        imdb: "tt1397131"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/47/119184.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/47/119184.jpg"
+      },
+      summary:
+        "<p><b>Secret History</b> is a long-running documentary series that originally ran on British television. Using a combination of interviews and archival footage, the show re-examines key historical moments of international events, often utilizing little-known and previously suppressed information. In 1992, the show won the Royal Television Society award for Best Documentary Series.</p>",
+      updated: 1530882975,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/13863"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1445778"
+        }
+      }
+    }
+  },
+  {
+    score: 12.964049,
+    show: {
+      id: 6504,
+      url: "http://www.tvmaze.com/shows/6504/drunk-history",
+      name: "Drunk History",
+      type: "Variety",
+      language: "English",
+      genres: ["Comedy", "History"],
+      status: "Ended",
+      runtime: 30,
+      premiered: "2015-01-12",
+      officialSite: "http://www.comedycentral.co.uk/drunk-history",
+      schedule: {
+        time: "22:00",
+        days: ["Wednesday"]
+      },
+      rating: {
+        average: 8.2
+      },
+      weight: 78,
+      network: {
+        id: 309,
+        name: "Comedy Central",
+        country: {
+          name: "United Kingdom",
+          code: "GB",
+          timezone: "Europe/London"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: 47352,
+        thetvdb: 290572,
+        imdb: null
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/24/61904.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/24/61904.jpg"
+      },
+      summary:
+        "<p>Jimmy Carr narrates a series based on the popular US format in which top comedians tell classic historical stories whilst drunk. As the stories are told, a famous ensemble cast re-enact the tales.</p>",
+      updated: 1547340613,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/6504"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1155243"
+        }
+      }
+    }
+  },
+  {
+    score: 12.668937,
+    show: {
+      id: 13638,
+      url: "http://www.tvmaze.com/shows/13638/making-history",
+      name: "Making History",
+      type: "Scripted",
+      language: "English",
+      genres: ["Comedy", "Adventure", "Science-Fiction"],
+      status: "Ended",
+      runtime: 30,
+      premiered: "2017-03-05",
+      officialSite: "http://www.fox.com/making-history",
+      schedule: {
+        time: "20:30",
+        days: ["Sunday"]
+      },
+      rating: {
+        average: 5.9
+      },
+      weight: 79,
+      network: {
+        id: 4,
+        name: "FOX",
+        country: {
+          name: "United States",
+          code: "US",
+          timezone: "America/New_York"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: null,
+        thetvdb: 311833,
+        imdb: "tt5515410"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/155/389842.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/155/389842.jpg"
+      },
+      summary:
+        "<p><b>Making History</b> follows three friends from two different centuries as they try to balance the thrill of time travel with the mundane concerns of their present-day lives. Two shows in one, it's both a rollicking historical adventure, and a contemporary comedy about love, friendship and trying to fit in to an increasingly complex and impersonal world.</p><p>Dan Chambers, a computer science professor at a small Massachusetts college, recently discovered time travel and has been transporting himself back to the 1700s to spend time with the colonial woman he's fallen for. In the present, Dan is an unpopular nerd. But by claiming song lyrics, lines from movies and stand-up bits as his own in the 18th century, he's absolutely hilarious - he gets the girl and makes friends. But Dan's actions in the past are messing up the present. That woman he's dating is not just any woman. She's Paul Revere's daughter, Deborah, and Dan's meddling in the past causes her father to delay his famous ride, which may have altered the outcome of the entire American Revolution. To set matters right, Dan enlists the help of his colleague, Chris Parish, a brilliant, polished and popular history professor, who's now given the incredible opportunity to actually live the history he teaches. Can Dan, Chris and Deborah save America as we know it? Can a woman from 1775 adapt to life in 2016? Can the three intrepid time travelers improve the past, help the helpless, fight for justice and get rich?</p>",
+      updated: 1542440513,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/13638"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1158176"
+        }
+      }
+    }
+  },
+  {
+    score: 12.099264,
+    show: {
+      id: 39136,
+      url: "http://www.tvmaze.com/shows/39136/future-history",
+      name: "Future History",
+      type: "Documentary",
+      language: "English",
+      genres: [],
+      status: "Running",
+      runtime: 30,
+      premiered: "2018-11-13",
+      officialSite: "https://futurehistorytv.ca/",
+      schedule: {
+        time: "19:30",
+        days: ["Tuesday"]
+      },
+      rating: {
+        average: null
+      },
+      weight: 36,
+      network: {
+        id: 792,
+        name: "Aboriginal Peoples Television Network",
+        country: {
+          name: "Canada",
+          code: "CA",
+          timezone: "America/Halifax"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: null,
+        thetvdb: null,
+        imdb: "tt6853214"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/171/429288.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/171/429288.jpg"
+      },
+      summary:
+        "<p><b>Future History</b> celebrates the reclamation and revitalization of Indigenous knowledge. It explores the diverse perspectives and knowledge within the Indigenous community to create a deeper understanding about a shared history, while looking forward to a brighter future. Hosts Kris Nahrgang and Sarain Fox seeks out those who are harnessing Indigenous knowledge to gain a deeper understanding of what it means to have an Indigenous world view.</p>",
+      updated: 1542175981,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/39136"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1547885"
+        }
+      }
+    }
+  },
+  {
+    score: 11.163884,
+    show: {
+      id: 4547,
+      url: "http://www.tvmaze.com/shows/4547/big-history",
+      name: "Big History",
+      type: "Documentary",
+      language: "English",
+      genres: ["History"],
+      status: "Ended",
+      runtime: 30,
+      premiered: "2013-11-02",
+      officialSite: null,
+      schedule: {
+        time: "22:00",
+        days: ["Saturday"]
+      },
+      rating: {
+        average: null
+      },
+      weight: 0,
+      network: {
+        id: 53,
+        name: "History",
+        country: {
+          name: "United States",
+          code: "US",
+          timezone: "America/New_York"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: 38672,
+        thetvdb: 274939,
+        imdb: "tt3250010"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/20/52123.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/20/52123.jpg"
+      },
+      summary:
+        "<p>Each episode of <b>Big History</b> will begin with an iconic topic from the pages of traditional history such as the Great Pyramids, The Titanic or the American Revolution but then will spin into surprising journeys through other fields, weaving together insights and evidence from various disciplines such as astronomy, physics, chemistry, biology, anthropology, history and economics. Spanning 13.7 billion years, Big History will ultimately pull together the puzzle pieces from all 16 half-hour episodes into an epic two-hour finale, creating one grand narrative and revealing the unifying link among all events.</p>",
+      updated: 1477343202,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/4547"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/293711"
+        }
+      }
+    }
+  },
+  {
+    score: 11.116973,
+    show: {
+      id: 4112,
+      url: "http://www.tvmaze.com/shows/4112/forbidden-history",
+      name: "Forbidden History",
+      type: "Documentary",
+      language: "English",
+      genres: ["History"],
+      status: "Running",
+      runtime: 60,
+      premiered: "2013-09-27",
+      officialSite: "http://yesterday.uktv.co.uk/shows/forbidden-history/",
+      schedule: {
+        time: "20:00",
+        days: ["Thursday"]
+      },
+      rating: {
+        average: null
+      },
+      weight: 77,
+      network: {
+        id: 345,
+        name: "Yesterday",
+        country: {
+          name: "United Kingdom",
+          code: "GB",
+          timezone: "Europe/London"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: 37649,
+        thetvdb: 274486,
+        imdb: "tt4192786"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/19/49920.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/19/49920.jpg"
+      },
+      summary:
+        "<p>Jamie Theakston's Forbidden History uncovers the truth behind great myths, conspiracy theories, ancient treasures, lost civilisations and war time secrets.</p>",
+      updated: 1544410006,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/4112"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1498564"
+        }
+      }
+    }
+  },
+  {
+    score: 11.100042,
+    show: {
+      id: 40226,
+      url: "http://www.tvmaze.com/shows/40226/extra-history",
+      name: "Extra History",
+      type: "Documentary",
+      language: "English",
+      genres: [],
+      status: "Running",
+      runtime: 10,
+      premiered: "2013-09-06",
+      officialSite: "https://becausegamesmatter.com/",
+      schedule: {
+        time: "",
+        days: ["Saturday"]
+      },
+      rating: {
+        average: null
+      },
+      weight: 42,
+      network: null,
+      webChannel: {
+        id: 21,
+        name: "YouTube",
+        country: null
+      },
+      externals: {
+        tvrage: null,
+        thetvdb: 294916,
+        imdb: null
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/178/447134.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/178/447134.jpg"
+      },
+      summary: null,
+      updated: 1547387830,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/40226"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1590406"
+        }
+      }
+    }
+  },
+  {
+    score: 10.957578,
+    show: {
+      id: 39230,
+      url: "http://www.tvmaze.com/shows/39230/family-history",
+      name: "Family History",
+      type: "Scripted",
+      language: "English",
+      genres: ["Drama"],
+      status: "In Development",
+      runtime: 60,
+      premiered: null,
+      officialSite: null,
+      schedule: {
+        time: "",
+        days: []
+      },
+      rating: {
+        average: null
+      },
+      weight: 0,
+      network: {
+        id: 3,
+        name: "ABC",
+        country: {
+          name: "United States",
+          code: "US",
+          timezone: "America/New_York"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: null,
+        thetvdb: null,
+        imdb: null
+      },
+      image: null,
+      summary:
+        "<p><strong>Family History</strong> is inspired by the recent explosion in genetic genealogy testing. It \nfollows a young tech reporter in the Bay area whose life changes when \nshe discovers a family secret via a DNA-testing web site. The show \nexplores nature versus nurture and how technology has caught up to our \nsecrets. We may be the last generation to have secrets.</p>",
+      updated: 1540228870,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/39230"
+        }
+      }
+    }
+  },
+  {
+    score: 10.548684,
+    show: {
+      id: 18655,
+      url: "http://www.tvmaze.com/shows/18655/the-history-of-comedy",
+      name: "The History of Comedy",
+      type: "Documentary",
+      language: "English",
+      genres: ["Comedy", "History"],
+      status: "Running",
+      runtime: 60,
+      premiered: "2017-02-09",
+      officialSite: "http://www.cnn.com/shows/history-of-comedy",
+      schedule: {
+        time: "22:00",
+        days: ["Sunday"]
+      },
+      rating: {
+        average: 9.4
+      },
+      weight: 65,
+      network: {
+        id: 40,
+        name: "CNN",
+        country: {
+          name: "United States",
+          code: "US",
+          timezone: "America/New_York"
+        }
+      },
+      webChannel: null,
+      externals: {
+        tvrage: null,
+        thetvdb: null,
+        imdb: "tt5737466"
+      },
+      image: {
+        medium:
+          "http://static.tvmaze.com/uploads/images/medium_portrait/137/344729.jpg",
+        original:
+          "http://static.tvmaze.com/uploads/images/original_untouched/137/344729.jpg"
+      },
+      summary:
+        "<p><b>The History of Comedy</b> explores what makes people laugh – from the Ancient Greeks, to Shakespeare, Vaudeville, to the biggest contemporary comedians, movies and TV shows. It digs deep into topics like political humor and slapstick, featuring the voices that have made us laugh over the generations. Using archival footage, original comedic material, interviews with comedy legends and luminaries, the series showcase how the art form has evolved over the years.</p>",
+      updated: 1544100763,
+      _links: {
+        self: {
+          href: "http://api.tvmaze.com/shows/18655"
+        },
+        previousepisode: {
+          href: "http://api.tvmaze.com/episodes/1505997"
+        }
+      }
+    }
+  }
+];

@@ -19,6 +19,7 @@ $star-radius: 15px;
     padding: 40px 0 30px;
   }
   .horizontal-scroll-card.movie-card {
+    cursor: pointer;
     width: calc(50% - 10px);
     display: inline-block;
     max-width: calc(110px + 15vw);

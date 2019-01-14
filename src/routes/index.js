@@ -8,7 +8,6 @@ export default () => (
   <BrowserRouter>
     <React.Fragment>
       <Route component={NavBar} />
-
       <Switch>
         <Route exact path="/search/:show" component={SearchPage} />
         <Route exact path="/home" component={Home} />
