@@ -710,6 +710,10 @@ a {
   overflow-y: auto;
 }
 
+.details-modal .recommended-actors {
+  padding: 30px 10px;
+}
+
 .details-modal h2.section-title {
   font-size: 22px;
   margin-bottom: 20px;
@@ -724,6 +728,8 @@ a {
 }
 
 .details-modal .top-banner .buttons {
+  max-width: 700px;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -823,6 +829,11 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.details-modal .details-content .left.movie-poster {
+  max-height: 250px;
+  max-width: 180px;
 }
 
 .details-modal .details-content .right {
@@ -961,6 +972,8 @@ a {
 
 .details-modal .season-data .season-poster {
   margin-right: 15px;
+  max-height: 250px;
+  max-width: 180px;
 }
 
 .details-modal .season-data .show-episodes.button {
@@ -970,6 +983,11 @@ a {
 .details-modal .button.add-to-favorite {
   padding: 20px;
   margin: 0 10px;
+}
+
+.details-content {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .details-content .episodes {

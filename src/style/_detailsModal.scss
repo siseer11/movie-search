@@ -7,6 +7,9 @@
   background-color: $mainGray;
   color: rgb(255, 255, 255);
   overflow-y: auto;
+  .recommended-actors {
+    padding: 30px 10px;
+  }
   h2.section-title {
     font-size: 22px;
     margin-bottom: 20px;
@@ -18,6 +21,8 @@
     background-position: center;
     position: relative;
     .buttons {
+      max-width: 700px;
+      margin: 0 auto;
       @include flex($justifyContent: space-between);
       z-index: 10;
       position: relative;
@@ -68,6 +73,8 @@
     }
     .left.movie-poster {
       @extend %small-movie-poster;
+      max-height: 250px;
+      max-width: 180px;
     }
     .right {
       flex-grow: 1;
@@ -146,6 +153,8 @@
     .season-poster {
       @extend %small-movie-poster;
       margin-right: 15px;
+      max-height: 250px;
+      max-width: 180px;
     }
     .show-episodes.button {
       @extend %yellow-button;
@@ -160,6 +169,10 @@
 }
 
 //Episodes styling
+.details-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
 .details-content .episodes {
   padding: 5px 0 25px;
   overflow-x: auto;
