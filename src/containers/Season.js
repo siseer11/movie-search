@@ -1,7 +1,7 @@
 import React from "react";
 
 import { BackgroundImageElement } from "../components/BackgroundImageElement";
-import { SeasonTableData } from "../components/DetailedInformationsModal/SeasonTableData";
+import { TableData } from "../components/DetailedInformationsModal/TableData";
 import { EpisodesList } from "../components/DetailedInformationsModal/EpisodesList";
 
 export default class Season extends React.Component {
@@ -28,7 +28,7 @@ export default class Season extends React.Component {
             />
             <div className="right-content">
               <div className="season-table-details" />
-              <SeasonTableData
+              <TableData
                 seasonData={{
                   Title: seasonData.name || `Season ${seasonData.number}`,
                   Episodes: seasonData.episodeOrder,

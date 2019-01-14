@@ -27,7 +27,9 @@ export const EpisodesList = ({ episodesData }) => (
             <div className="bottom-content">
               <div
                 className="episode-description"
-                dangerouslySetInnerHTML={{ __html: episode.summary }}
+                dangerouslySetInnerHTML={{
+                  __html: episode.summary || "No summary provided."
+                }}
               />
               <div className="episode-number">{episode.number}</div>
             </div>

@@ -1,7 +1,7 @@
 .recommended-actors {
   background-color: $darkGray;
   color: white;
-  padding: 30px $pageMargin;
+  padding: 60px $pageMargin;
   margin-top: 70px;
   .section-title {
     max-width: 1000px;
@@ -24,7 +24,7 @@
     }
   }
   .fade-overlay {
-    @include absolute($height: 50%, $bottom: 0);
+    @include absolute($height: 50%, $bottom: -1px);
     background: linear-gradient(rgba(32, 32, 39, 0), $darkGray);
   }
   .like-button {

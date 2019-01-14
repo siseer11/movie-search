@@ -1,8 +1,10 @@
 import React from "react";
+
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 import Home from "../containers/Home";
 import SearchPage from "../containers/SearchPage";
 import NavBar from "../containers/NavBar";
+import { Footer } from "../components/Footer";
 
 export default () => (
   <BrowserRouter>
@@ -13,7 +15,7 @@ export default () => (
         <Route exact path="/home" component={Home} />
         <Redirect to="/home" />
       </Switch>
-      <div>Footer placeholder</div>
+      <Route component={Footer} />
     </React.Fragment>
   </BrowserRouter>
 );

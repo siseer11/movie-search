@@ -4,6 +4,7 @@ import { TopBanner } from "./TopBanner";
 import { TopShortInfos } from "./TopShortInfos";
 import { ActorsHorizontalScroller } from "../ActorsHorizontalScroller";
 import { Seasons } from "./Seasons";
+import { TableData } from "./TableData";
 
 export const DetailedInformationsModalView = ({ movieData, toggleModal }) => (
   <React.Fragment>
@@ -25,6 +26,21 @@ export const DetailedInformationsModalView = ({ movieData, toggleModal }) => (
           <ActorsHorizontalScroller actorsData={movieData._embedded.cast} />
         </div>
       )}
+      <div className="about-table">
+        <h2 className="section-title">About</h2>
+        <TableData
+          seasonData={{
+            Title: movieData.name || `Season ${movieData.number}`,
+            Type: movieData.genres.join("/"),
+            Production: movieData.network.name,
+            Language: movieData.language,
+            Premiere: movieData.premiered,
+            Seasons: movieData._embedded.seasons.length,
+            Episodes: movieData._embedded.episodes.length,
+            Status: movieData.status
+          }}
+        />
+      </div>
       {movieData._embedded.seasons && (
         <Seasons
           seasonsData={movieData._embedded.seasons}
@@ -37,52 +53,29 @@ export const DetailedInformationsModalView = ({ movieData, toggleModal }) => (
 );
 
 /*
-const Details = () => (
-  <div>
 
-
-   <div className="details-content">
-     
-     
-     
-     
-
-     
-     
-     
-   </div>
- </div>
-);
-
-
+  
+  
+    <tr>
+      <th className="left-content">Title:</th>
+      <th className="right-content">The Custom Cars</th>
+    </tr>
+    <tr>
+      <th className="left-content">Type:</th>
+      <th className="right-content">Action/Fake/TV-show</th>
+    </tr>
+    <tr>
+      <th className="left-content">Production:</th>
+      <th className="right-content">BBC</th>
+    </tr>
+    <tr>
+      <th className="left-content">Premiere:</th>
+      <th className="right-content">2018-05-01</th>
+    </tr>
+    <tr>
+      <th className="left-content">Seasons:</th>
+      <th className="right-content">5</th>
+    </tr>
+  </table>
+</div>
 */
-
-/*
-<div className="about-table">
-       <h2 className="section-title">About</h2>
-       <table>
-         <tr>
-           <th className="left-content">Title:</th>
-           <th className="right-content">The Custom Cars</th>
-         </tr>
-         <tr>
-           <th className="left-content">Type:</th>
-           <th className="right-content">Action/Fake/TV-show</th>
-         </tr>
-         <tr>
-           <th className="left-content">Production:</th>
-           <th className="right-content">BBC</th>
-         </tr>
-         <tr>
-           <th className="left-content">Premiere:</th>
-           <th className="right-content">2018-05-01</th>
-         </tr>
-         <tr>
-           <th className="left-content">Seasons:</th>
-           <th className="right-content">5</th>
-         </tr>
-       </table>
-     </div>
-   
-
-  */
