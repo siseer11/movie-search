@@ -34,7 +34,7 @@ export const Footer = () => (
         </div>
       </div>
     </div>
-    <div class="copyrights">
+    <div className="copyrights">
       <p>&copy; 2018 JWZAD All rights reserved</p>
     </div>
   </div>

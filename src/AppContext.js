@@ -1,11 +1,14 @@
 import React from "react";
 
+import { recomandedMovies } from "./mockData/recomandedMovies";
+import { recomandedActors } from "./mockData/recomandedActors";
+
 export const AppContext = React.createContext();
 
 export default class AppProvider extends React.Component {
   state = {
-    recomandedMovies: [], //Recomandend movies, mock data for now
-    recomandedActors: [], //Recomanded actors, mock data for now
+    recomandedMovies: recomandedMovies, //Recomandend movies, mock data for now
+    recomandedActors: recomandedActors, //Recomanded actors, mock data for now
     detailedMoviesData: {}, //Movies that we allready fetched the details for
     likedMovies: [], //Movies that the user did like
     likedActors: [], //Acotrs that the user did like

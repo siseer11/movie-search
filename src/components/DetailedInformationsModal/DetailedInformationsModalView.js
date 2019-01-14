@@ -32,7 +32,7 @@ export const DetailedInformationsModalView = ({ movieData, toggleModal }) => (
           seasonData={{
             Title: movieData.name || `Season ${movieData.number}`,
             Type: movieData.genres.join("/"),
-            Production: movieData.network.name,
+            Production: (movieData.network || { name: "" }).name,
             Language: movieData.language,
             Premiere: movieData.premiered,
             Seasons: movieData._embedded.seasons.length,

@@ -17,7 +17,6 @@ export const RatingStars = ({ rating, movieId }) => {
   for (let i = 0; i < 5; i++) {
     if (i < lastFull) {
       //The star is before the last one so its full
-      console.log(`${movieId}`);
       stars.push(<StarIcon key={i} id={`${i}-${movieId}`} />);
     } else if (i > lastFull) {
       //The star is after last filled one, so it's emty

@@ -55,7 +55,7 @@ export default class SearchForm extends React.Component {
         in={visible}
         appear={false}
         timeout={400}
-        classNames="zzzz"
+        classNames="seach-animation"
         onEntered={() => {
           this.searchInput.focus();
         }}

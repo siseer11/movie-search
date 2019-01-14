@@ -105,6 +105,7 @@ a {
           justify-content: center;
   width: 100%;
   height: 100%;
+  min-height: 60vh;
 }
 
 .loading-page h2 {
@@ -331,33 +332,33 @@ a {
   transition: 0.1s 0.1s linear all;
 }
 
-.nav-bar .form-wrapper.zzzz-enter, .nav-bar .form-wrapper.zzzz-enter-done {
+.nav-bar .form-wrapper.seach-animation-enter, .nav-bar .form-wrapper.seach-animation-enter-done {
   z-index: 99;
 }
 
-.nav-bar .form-wrapper.zzzz-enter input.search-input, .nav-bar .form-wrapper.zzzz-enter-done input.search-input {
+.nav-bar .form-wrapper.seach-animation-enter input.search-input, .nav-bar .form-wrapper.seach-animation-enter-done input.search-input {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
 }
 
-.nav-bar .form-wrapper.zzzz-enter input.submit-input, .nav-bar .form-wrapper.zzzz-enter-done input.submit-input {
+.nav-bar .form-wrapper.seach-animation-enter input.submit-input, .nav-bar .form-wrapper.seach-animation-enter-done input.submit-input {
   opacity: 1;
   -webkit-transform: scale(1);
           transform: scale(1);
 }
 
-.nav-bar .form-wrapper.zzzz-exit {
+.nav-bar .form-wrapper.seach-animation-exit {
   z-index: 99;
 }
 
-.nav-bar .form-wrapper.zzzz-exit input.search-input {
+.nav-bar .form-wrapper.seach-animation-exit input.search-input {
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
   -webkit-transition: 0.2s 0.1s linear transform;
   transition: 0.2s 0.1s linear transform;
 }
 
-.nav-bar .form-wrapper.zzzz-exit input.submit-input {
+.nav-bar .form-wrapper.seach-animation-exit input.submit-input {
   -webkit-transform: scale(0.5);
           transform: scale(0.5);
   opacity: 0;
@@ -533,6 +534,7 @@ a {
 .search-results-section {
   padding: 30px 10px;
   color: white;
+  min-height: 60vh;
 }
 
 .search-results-items {
@@ -681,6 +683,20 @@ a {
   .search-results-section .left-content {
     margin-bottom: 10px;
   }
+}
+
+.no-search-results {
+  font-size: 30px;
+  height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .details-modal {

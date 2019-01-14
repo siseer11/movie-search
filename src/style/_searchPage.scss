@@ -1,6 +1,7 @@
 .search-results-section {
   padding: 30px $pageMargin;
   color: rgb(255, 255, 255);
+  min-height: 60vh;
 }
 
 .search-results-items {
@@ -101,4 +102,13 @@
       margin-bottom: 10px;
     }
   }
+}
+
+//404 no results
+.no-search-results {
+  font-size: 30px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
